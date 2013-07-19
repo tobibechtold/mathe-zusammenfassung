@@ -83,6 +83,7 @@ $=> x \in (-5, 1)$
 
 \section{Ableitungen}
 
+
 \subsection{Ableitungsregeln}
 \renewcommand{\arraystretch}{1.5}
 
@@ -149,7 +150,7 @@ Beispiel: $f(x,y)= x^2 + y^2$ \\
 
 $\frac{\partial f}{\partial x} = 
 \begin{pmatrix}
-	\frac{\partial f}{\partial x} \\
+	\frac{\partial f}{\partial x} \\ 
 	\frac{\partial f}{\partial y}
 \end{pmatrix}
 = 
@@ -157,6 +158,101 @@ $\frac{\partial f}{\partial x} =
 	2x\\
 	2y
 \end{pmatrix}$ \newline
+
+\section{Lineare Regression (S. 44)}
+In der Klausur müssen nur die Matrizen A, y und x angeben. Man hat am Anfang
+immer einen Ansatz nachdem man diese Matrizen befüllt.\newline
+Im ersten Beispiel ist der Ansatz: $y=a_0 + a_1x+a_2x^2$ \\
+\newline Somit ergibt sich $A=$
+$\begin{pmatrix}
+	1 & x_1 & x_1^2\\
+	1 & x_2 & x_2^2\\
+	  & \ldots &  \\
+	1 & x_n & x_n^2\\
+\end{pmatrix}$
+mit $y=$
+$\begin{pmatrix}
+	y_1\\
+	\ldots\\
+	y_n\\
+\end{pmatrix}$
+und $x=$
+$\begin{pmatrix}
+	a_0\\
+	a_1\\
+	a_2\\
+\end{pmatrix}$
+\newline Um jetzt x auszurechnen gibt es folgende Formel: $A^TAx = A^Ty$ $<=>$
+$x=(A^TA)^{-1} \cdot Ay$\\
+Das ist aber in der Klausur nicht gefragt deshalb hier zwei Beispiele. \\
+\newline Beispiel 1: $x_1(1|0); x_2(3|0); x_3(4|1); x_4(6|10)$ \\
+\setlength{\tabcolsep}{10pt}
+\newline \begin{tabular}{l r}
+	Ansätze: a) $y=a_0x+a_1e^x+a_2\sqrt{x}$ & b) $y=a_0 +a_1\frac{1}{x}$
+\end{tabular} \\
+\newline a) Bei diesem Beispiel ist besonders das im Ansatz bei $a_0$ ein $x$
+dabeisteht. Normalerweise steht da keines und dann besteht die erste Spalte der
+Matrix nur aus einsen.\\
+ \newline $A=$ $\begin{pmatrix}
+	1 & e & 1\\
+	3 & e^3 & \sqrt{3}\\
+	4 & e^4 & 2\\
+	6 & e^6 & \sqrt{6}\\ 
+\end{pmatrix}$
+$y=$ $\begin{pmatrix}
+	0\\0\\1\\10
+\end{pmatrix}$
+$x=$ $\begin{pmatrix}
+	a_0\\a_1\\a_2
+\end{pmatrix}$ \\
+\newline b) Das Beispiel kommt schon dem Standard Aufgabentyp näher da da eben
+kein $x$ bei $a_0$ steht.\\
+\newline $A=$ $\begin{pmatrix}
+	1 & 1\\
+	1 & \frac{1}{3}\\
+	1 & \frac{1}{4}\\
+	1 & \frac{1}{6}\\
+\end{pmatrix}$
+$y=$ $\begin{pmatrix}
+	0\\0\\1\\10
+\end{pmatrix}$
+$x=$ $\begin{pmatrix}
+	a_0\\a_1\\a_2
+\end{pmatrix}$ \\
+\newline Es können auch Aufgaben kommen bei denen kein Ansatz gegeben ist. Hier
+wird dann z.B nach einem Polynom 2. Grades gefragt. Hierfür wäre der Ansatz
+z.B $y=a_0+a_1x+a_2x^2$. \\
+Wird nach einer Gerade gefragt gleicht das einem Polynom ersten Grades also
+$y=a_0+a_1x$.
+\newpage
+\section{Lagrange Interpolation}
+$L(x) = y_0L_0(x) + y_1L_1(x) + y_2L_2(x)+\ldots +y_nL_n(x)$\\
+\newline mit $L_k(x)=\frac{(x-x_0)(x-x_1)\ldots
+(x-x_{k-1})(x-x_{k+1})\ldots(x-x_n)}{(x_k-x_0)(x_k-x_1)\ldots(x_k-x_{k-1})(x_k-x_{k+1})\ldots(x_k-x_n)}$\\
+\subsection{Lagrange Gleichung aufstellen}
+Beispiel 1: Berechnen sie ein Polynom, das durch (-1/-4), (0/-1), (1/0)
+und (2/5) geht. \\
+\newline Da wir 4 Punkte mit 4 y Werten haben sieht unsere Gleichung so aus:\\
+\newline $L(x)=y_0L_0(x)+y_1L_1(x)+y_2L_2(x)+y_3L_3(x)$.\\
+\newline Jetzt können wir schonmal die $y$-Werte einsetzen und sehen das
+$L_2(x)$ rausfällt. Damit müssen wir das schon nicht mehr berechnen.
+\newline Also sieht die Gleichung jetzt so aus:
+$L(x)=-4L_0(x)-L_1(x)+5L_3(x)$.
+
+\subsection{Gleichungen ausrechnen}
+Jetzt die X-Werte einsetzen. Zu beachten hierbei im Zähler werden nur die
+$x_n$-Werte von $x$ abgezogen die nicht gleich dem k von $L_k(X)$ sind das man
+gerade ausrechnet. Im Nenner ist es das gleiche Spiel. Man zieht nur die x-Werte
+ab die nicht als erstes in der Klammer stehen.\\
+\newline $L_0(x) = \frac{(x-x_1)(x-x_2)(x-x_3)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)}=
+\frac{(x-0)(x-1)(x-2)}{-1 \cdot -2 \cdot -3}=-\frac{1}{6}(x^3-3x^2+2x)$.\\
+\newline $L_1(x)= \frac{(x-x_0)(x-x_2)(x-x_3)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)}=
+\frac{(x+1)(x-1)(x-2)}{1 \cdot (-1) \cdot (-2)}=\frac{1}{2}(x^3-2x^2-x+2)$.\\
+\newline $L_3(x)=
+\frac{(x-x_0)(x-x_1)(x-x_2)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)}=\frac{1}{6}(x^3-x)$.\\
+
+\subsection{Gleichungen in Lagrange Gleichung einsetzen}
+$\frac{4}{6}(x^3-3x^2+2x)-\frac{1}{2}(x^3-2x^2-x+2)+\frac{5}{6}(x^3-x)=x^3-x^2+x-1$.
 
 \section{Fehlerrechnung (S. 34)}
 
