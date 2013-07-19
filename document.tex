@@ -1,0 +1,311 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
+\usepackage{paralist}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\title{Zusammenfassung Einführung in die Analysis}
+\author{Jannis Hübl und Tobias Bechtold}
+\date{Juli 2013}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Konvergenzkriterien für Reihen (S. 11)}
+
+\subsection{Quotientenkriterium}
+
+
+$ c = \lim_{x \to \infty} |\frac {a_{k+1}} {a_{k}}|$
+
+
+\subsection{Wurzelkriterium}
+
+$ c = \lim_{x \to \infty} \sqrt[k]{|a_{k+1}|} = 0 $
+
+\subsection{Divergenz/Konvergenz}
+
+$ c < 1 => $Absol. Konvergenz
+
+$ c > 1 => $ Divergenz
+
+$ c = 0 => $Keine Aussage möglich
+
+\section{Konvergenzkriterium für Potenzreihen (S. 12)}
+
+Bsp.: $ \sum \frac{2k}{3^k} (x + 2)^k$
+
+\subsection {Substituieren}
+u = x + 2
+
+\subsection {r bestimmen}
+
+$ r = \lim_{k \to \infty} |\frac{a_k}{a_{k+1}}| $
+
+oder
+
+$ r = \frac {1} {\lim_{k \to \infty} \sqrt[k]{|a_k|}}$
+
+$Bsp: r = \lim_{k \to
+	\infty} \frac {\frac {2k} {3^k}}{\frac{2(k+1)}{3^{k+1}}} = \lim_{k \to \infty}
+	\frac {2k 3^k} {2(k+1) 3^{k+1}} = 3$
+
+	\subsection { u bestimmen}
+
+	$u_0 = -r = -3$
+
+	$u_1 =  r = 3$
+
+	\subsection { Ränder auf Divergenz/Konvergenz prüfen}
+
+	$u_0 = -3: \sum \frac{2k} {3^k} (-3)^k => Div.$
+
+	$u_1 = 3: \sum \frac{2k} {3^k} (3)^k => Div.$    
+
+	$=> u \in (-3, 3)$
+
+	\subsection { Konvergenzgebiet ausrechen}
+
+	$u = (x - 2)$
+
+	$u_0 = -3 = (x_0 - 2) => x_0 = -5$
+
+	$u_1 = -3 = (x_1 - 2) => x_1 = 1$
+
+	$=> x \in (-5, 1)$ 
+
+
+	\section{Ableitungen}
+
+TODO: Tabelle mit Ableitungen, Kettenregel, Quotientenregel mit ein paar
+schweren beispielen, Richtungsableitungen, usw\ldots 
+\subsection{Ableitungsregeln}
+\renewcommand{\arraystretch}{1.5}
+
+\begin{tabular}{l | r} 
+	$f(x)$ & $f'(x)$\\
+	\hline 
+	$c = const$ & $0$\\
+	$x^n$ & $n \cdot x^{n-1}$\\
+	$\sqrt{x}$ & $\frac{1}{2\cdot\sqrt{x}}$\\
+	$e^x$ & $e^x$\\
+	$a^x$ & $\ln{a} \cdot a^x$\\
+	$\frac{1}{x^n}$ & $- \frac{n}{x^{n+1}}$\\
+	$\sqrt[n]{x}$ & $\frac{1}{n \cdot \sqrt[n]{x^{n-1}}}$\\
+	$\ln{x}$ & $\frac{1}{x}$\\
+	$\sin{x}$ & $\cos{x}$\\
+	$\cos{x}$ & $-\sin{x}$\\
+	$\tan{x}$ & $\frac{1}{\cos^2{x}}$\\
+\end{tabular} \newpage
+
+\subsection{Produktregel}
+Die Ableitung von $f \cdot g$ ist gegeben durch: \newline
+\newline $(f(x) \cdot g(x))' = f'(x) \cdot g(x) + f(x) \cdot g'(x)$\newline
+\newline Beispiel: $f(x) = (5x^2 - 3) \cdot (8x^3+2x)$
+
+\begin{tabular}{l r}
+	$f(x) = 5x^2 - 3$ & $f'(x) = 10x$\\
+	$g(x)=8x^3+2x$ & $24x^2 + 2$\\
+\end{tabular} \newline
+\newline Produktregel anwenden: 
+\newline $f'(x)=10x \cdot (8x^3+2x) + (5x^2-3) \cdot (24x^2+2)$ \newline
+\newline Vereinfachen: $f'(x) = 200x^4-42x^2-6$
+
+\subsection{Quotientenregel}
+
+Die Ableitung von $\frac{f}{g}$ ist gegeben durch: \\
+\newline $(\frac{f(x)}{g(x)})' = \frac{f'(x) \cdot g(x) + f(x) \cdot
+g'(x)}{(g(x))^2}$ \\
+
+Beispiel: $(\frac{5x}{e^x})' = \frac{5e^x-5xe^x}{e^{2x}} = \frac{5(1-x)}{e^x}$
+
+\subsection{Kettenregel}
+
+$(f(g(x)))' = f'(g(x)) \cdot g'(x)$\\
+\newline Beispiel 1: $e^{x^{2}}$\\ 
+\begin{tabular}{l r}
+	$f(x)=e^x$ & $f'(x)=e^x$\\
+	$g(x)=x^2$ & $g'(x)=2x$\\
+	$f'(g(x))=e^{x^{2}}$ & $g'(x)=2x$\\
+	 & \\
+	$f(g(x))'=2xe^{x^{2}}$
+\end{tabular} \newline
+\newline Weitere Beispiele: \\
+$(e^{2x})' = 2e^{2x}$\\
+$(\sin{e^{2x}})' = \cos{e^{2x}} \cdot 2e^{2x}$\\
+$(2^{\cos{x}})'=\ln{2} \cdot 2^{\cos{x}} \cdot (-\sin{x})$
+
+\subsection{Partielle Ableitung}
+Es wird immer nur nach einem Parameter abgeleitet.\\
+Beispiel: $f(x,y)= x^2 + y^2$ \\
+\newline \begin{tabular}{l r}
+$\frac{\partial f(x,y)}{\partial x}= 2x$ & $\frac{\partial f(x,y)}{\partial 
+y}=2y$\\
+\end{tabular}
+
+$\frac{\partial f}{\partial x} = 
+\begin{pmatrix}
+	\frac{\partial f}{\partial x} \\
+	\frac{\partial f}{\partial y}
+\end{pmatrix}
+= 
+\begin{pmatrix}
+	2x\\
+	2y
+\end{pmatrix}$ \newline
+
+\section{Fehlerrechnung (S. 34)}
+
+Bsp: $u(t) = u_0 e^{- \frac{t}{R C}}; u_0 = 5V; R = 100 \Omega; C =
+10^{-3}F; max. Fehler: 0,01 $
+\subsection { max. Fehler der ``Eingangswerte'' berechnen }
+
+$ \Delta C = C * maxFehler = C * 0,01 = 10^{-3} * 0,01 = 10^{-7} $
+
+$ \Delta R = R * maxFehler = R * 0,01 = 100 * 0,01 = 1 $
+
+\subsection { Ableiten nach Fehlervariablen}
+
+$\frac {du} {dR} = u_0 e^{\frac{-t}{RC}} (\frac{t}{C}R^{-2}) = \frac{u_0 *
+	t}{R^2 * C} e^{\frac{-t}{RC}}$
+
+	$\frac {du} {dC} = \frac{u_0 *
+		t}{R * C^2} e^{\frac{-t}{RC}}$
+
+		\subsection { Absoluterfehler ausrechnen}
+
+		Werte in Formel einsetzen und ausrechnen
+
+		$\Delta u \leq |\frac {du} {dR} \Delta R |+| \frac {du} {dC} \Delta C| = |
+		0,0184 * 1 |+| 183939,72 * 10^{-7}|$
+
+		\subsection { Relativerfehler}
+
+		Absoluterfehler / Wert an einer Stelle
+
+(die stelle soll 1ms sein)
+
+	$\frac{\Delta u}{u(1ms)} = \frac {0,0184} {1,84} + \frac {18393,72* 10^{-7}}
+	{1,84} = 0.02 $
+
+	\newpage
+	\section{Extremalaufgaben (Methode von Lagrange) (S. 38)}
+(Lagrange siehe S. 40 + 41)
+
+	$Bsp: Q = y - x^2; Restriktion: y = 2x - 1 $
+
+	\subsection{Graph mit Höhenlinien zeichnen}
+
+	Für Q Werte einsetzen (wenn nicht vorgegeben -1, 0, 1.. irgendwelche beliebigen
+			``schönen'' Werte) und dann immer nach y auflösen, dann die erhaltene Funktionen
+	zeichnen. (Dazu die Q Werte schreiben, das sind die Höhenwerte). Im folgenden
+	Beispiel lautet die Funktion $Q = y - x^2$. Man bekommt nun sozusagen Parabeln
+	raus, die man dann einfach in ein Koordinatensystem einzeichnet. \newline
+
+	$Q = -1 => -1 = y - x^2 <=> y = x^2 -1$
+
+	$Q = 0 => 0 = y - x^2 <=> y = x^2$
+
+	$Q = 1 => 1 = y - x^2 <=> y = x^2 +1$
+
+	$Q = 2 => 2 = y - x^2 <=> y = x^2 +2$
+
+
+	\subsection{Gradienten in Punkten bestimmen}
+
+	Dazu die Funktion Partiell ableiten und in die Ableitung den Punkt einsetzen,
+	das Ergebnis der Gradient in dem Punkt \newline
+	Bsp: $\frac{\partial Q}{\partial x} = 
+	\begin{pmatrix}
+	\frac{\partial Q}{\partial x} \\
+		\frac{\partial Q}{\partial y}
+		\end{pmatrix}
+		=  
+		\begin{pmatrix} 
+		-2x-1 \\
+			1
+			\end{pmatrix}$ \newline
+			\newline
+			Punkt (0/1) einsetzen =$>$ 
+			$\begin{pmatrix}
+			0\\
+				1
+				\end{pmatrix}$ 
+
+				\subsection{Optimierungsproblem lösen}
+
+				An welchem Punk ist die Restrikion am Höchsten/Niedristen? \newline
+
+				$L(x,y,\lambda) = Q(x,y) + \lambda * h(x,y) = y-x^2+\lambda(y-2x+1)$ \newline
+
+				\begin{compactenum}[(1)] 
+				\item $\frac{\partial L}{\partial x} = 0 = -2x-2\lambda$ 
+				\item $\frac{\partial L}{\partial y} = 0 = 1 + \lambda => \lambda = -1 => x = 1
+				=> y = 1$
+				\item $\frac{\partial L}{\partial \lambda} = 0 = y-2x+1$ \newline
+				\end{compactenum}
+
+	im Punkt (1/1) ist ein Maximum \newline
+\newline (Das findet man heraus wenn man den Punkt in die Zeichnung einsetzt und betrachtet wie die Restiktion auf der Fläche verläuft.)
+
+	\section { Taylor-Approximation (S. 52 -54)}
+
+	Approximation $\approx $Annäherung an eine Andere Funktion \newline 
+	\newline Bsp: $f(x) = x^3 + x^2 + 3x - 7 ; x_0 = 1$ 	
+
+	\subsection {Welchen Grad soll die Zielfunktion haben?}
+
+	$x^3; x^2; x^n ?$\newline
+	\newline In unserem Bsp. soll die Zielfunktion vom Grad 2 sein.
+
+
+	\subsection {Start Funktion n-mal ableiten.}
+
+	f(x) 2 mal ableiten\newline
+	\newline
+	$f'(x) = 3x^2 + 2x + 3$\newline
+	$f''(x) = 6x + 2$
+
+
+	\subsection {Einsetzen in Taylorsche Formel}
+
+	$ f(x) = \sum_{k=0}^n \frac {f^{(k)}(x_0)}{k!}(x - x_0)^k$\newline
+	\newline Bsp:\newline				
+	$f(x) = \frac {f(x_0)}{0!} (x - x_0)^0 + \frac {f'(x_0)}{1!} (x - x_0)^1 + \frac {f''(x_0)}{2!} (x - x_0)^2 =$\newline
+	\newline $\frac {x_0^3 + x_0^2 + 3x_0 - 7}{0!} (x - x_0)^0 + \frac {3x_0^2 + 2x_0 + 3}{1!} (x - x_0)^1 + \frac {6x_0 + 2}{2!} (x - x_0)^2 = $\newline
+	\newline $\frac {1^3 + 1^2 + 3 * 1 - 7}{0!} (x - 1)^0 + \frac {3 *1^2 + 2*1 + 3}{1!} (x - 1)^1 + \frac {6 * 1 + 2}{2!} (x - 1)^2 = $\newline
+	\newline $-2+8(x-1)+\frac 8 2 (x-1)^2 = 4x^2 - 6$
+
+	\subsection {Nullstellen berechnen}
+
+	In der Probeklausur sollten wir die Nullstellen dieser Funktion berechen. \newline
+	fals jemand damit ein Problem hat, hier die Lösung: \newline
+	\newline $ 4x^2 - 6 = 0 => x= \pm \sqrt {\frac 3 2}$  
+
+	\section {Differenzialgleichungen S. 71}
+
+	( Man will eine Formel Ableiten in der eine eigenen Ableitung vorkommt )\newline
+	\newline Bsp.: $ y''' - 4y'' +5y' -2y = 0 ; y(0) = -1; y'(0) = -2; y''(0) = 5;$
+
+	\subsection { Charakteristische Gleichung aufstellen} 
+	Alle $y^{(k)}\; durch \; \lambda^k ersetzen.$\newline
+	\newline Bsp: $ \lambda^3 - 4 \lambda^2 + 5 \lambda^1 - 2\lambda^0 = \lambda^3 - 4 \lambda^2 + 5 \lambda - 2$
+	\subsection {Nullstellen der Charakteristeschen Gleicheung berechnen}
+
+	(Die sollten normalerweise vom Makus angegeben sein) \newline
+	\newline
+
+	\subsection {Basislösung zuordnen}
+
+	Die Basislösungen sind Hier:\newline
+	\begin{tabular} {l | c | r}
+	Bsp & Lösung der char. Gleichung &  Basislösung der Dgl. \\
+		\hline
+		$(x-2) $ & $\lambda$ 1-fach reell & $e^{\lambda x} $ \\
+			$(x-2)^2$ & $\lambda$ k-fach reell & $ e^{\lambda x }, x e^{\lambda x},..., x^{k-1} e^{\lambda x}$ \\  
+			\end{tabular}
+
+			\end{document}
